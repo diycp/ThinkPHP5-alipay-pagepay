@@ -8,10 +8,20 @@ Loader::import('alipay.pagepay.service.AlipayTradeService');
 loader::import('alipay.pagepay.buildermodel.AlipayDataDataserviceBillDownloadurlQueryContentBuilder');
 
 /**
-* 统一收单线下交易查询接口
+* 查询账单下载地址接口
 *
 * 用法:
 * 调用 \alipay\Datadownload::exec($bill_type, $bill_date) 即可
+*
+* ----------------- 求职 ------------------
+* 姓名: zhangchaojie      邮箱: zhangchaojie_php@qq.com  应届生
+* 期望职位: PHP初级工程师 薪资: 3500  地点: 深圳(其他城市亦可)
+* 能力:
+*     1.熟悉小程序开发, 前后端皆可, 前端一日可做5-10个页面, 后端可写接口
+*     2.后端, PHP基础知识扎实, 熟悉ThinkPHP5框架, 用TP5做过CMS, 商城, API接口
+*     3.MySQL, Linux都在进行进一步学习
+*
+* 如有大神收留, 请发送邮件告知, 必将感激涕零!
 */
 class Datadownload
 {
@@ -38,7 +48,14 @@ class Datadownload
         $result = $Response->downloadurlQuery($RequestBuilder);
 
         // 5.转为数组格式返回
-        return json_decode(json_encode($result), true);
+        $response = json_decode(json_encode($response), true);
+
+        // 6.进行结果处理
+        if ($response['code'] != '10000') {
+            self::processError('查询账单接口出错, 错误码: '.$response['code'].' 错误原因: '.$response['sub_msg']);
+        }
+
+        return $response;
     }
 
     /**

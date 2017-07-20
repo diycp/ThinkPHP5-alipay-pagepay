@@ -4,7 +4,7 @@
 - 多种支付指该函目前所有的APP支付, 手机支付, 电脑支付和当面付, 不过是低耦合, 只选其中一部分删除企业也可以
 
 ## 使用说明
-将<code>alipay</code>文件夹, 放入<code>extend</code>目录即可
+将文件夹拷贝到根目录即可, 其中<code>extend</code>目录为扩展目录, <code>application\extra\alipay.php</code>为配置文件
 
 ## 注意
 错误采用抛出异常的方式, 可根据自己的业务在统一接口进行修改

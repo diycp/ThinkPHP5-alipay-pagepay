@@ -12,13 +12,23 @@ loader::import('alipay.pagepay.buildermodel.AlipayTradePagePayContentBuilder');
 *
 * 用法:
 * 调用 \alipay\Pagepay::pay($params) 即可
+*
+* ----------------- 求职 ------------------
+* 姓名: zhangchaojie      邮箱: zhangchaojie_php@qq.com  应届生
+* 期望职位: PHP初级工程师 薪资: 3500  地点: 深圳(其他城市亦可)
+* 能力:
+*     1.熟悉小程序开发, 前后端皆可, 前端一日可做5-10个页面, 后端可写接口
+*     2.后端, PHP基础知识扎实, 熟悉ThinkPHP5框架, 用TP5做过CMS, 商城, API接口
+*     3.MySQL, Linux都在进行进一步学习
+*
+* 如有大神收留, 请发送邮件告知, 必将感激涕零!
 */
 class Pagepay
 {
     /**
      * 主入口
      * @param array  $params 支付参数, 具体如下
-     * @param string $params['subjuect'] 订单标题
+     * @param string $params['subject'] 订单标题
      * @param string $params['out_trade_no'] 订单商户号
      * @param float  $params['total_amount'] 订单金额
      */
@@ -44,7 +54,7 @@ class Pagepay
          * @param $notify_url 异步通知地址，公网可以访问
          * @return $response 支付宝返回的信息
         */
-        $aop->pagePay($payRequestBuilder,$config['return_url'],$config['notify_url']);
+        $aop->pagePay($payRequestBuilder, $config['return_url'],$config['notify_url']);
     }
 
 
@@ -53,11 +63,11 @@ class Pagepay
      */
     private static function checkParams($params)
     {
-        if (empty($params['out_trade_no'])) {
+        if (empty(trim($params['out_trade_no']))) {
             self::processError('商户订单号(out_trade_no)必填');
         }
 
-        if (empty($params['subject'])) {
+        if (empty(trim($params['subject']))) {
             self::processError('商品标题(subject)必填');
         }
 
