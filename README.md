@@ -25,3 +25,6 @@
 
 #### 查询账单下载地址接口 Datadownload.php
 调用 <code>\alipay\Datadownload::exec($bill_type, $bill_date)</code> 即可
+
+#### 验签 Notify.php
+调用 <code>\alipay\Notify::checkSign($params)</code> 即可
